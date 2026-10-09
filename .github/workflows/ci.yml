@@ -1,6 +1,7 @@
 # Installs hill from scratch on macOS and Linux, with hill-ops and its
 # packages from PyPI, runs its tests and mdvault's, and builds the wheels.
-# tmux is installed so the end-to-end test runs rather than skips.
+# tmux is installed so the end-to-end test runs rather than skips, and
+# micro since that test opens a note in it.
 name: CI
 
 on:
@@ -18,12 +19,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7.0.1
-      - name: tmux (Linux)
+      - name: tmux and micro (Linux)
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y tmux
-      - name: tmux (macOS)
+        run: sudo apt-get update && sudo apt-get install -y tmux micro
+      - name: tmux and micro (macOS)
         if: runner.os == 'macOS'
-        run: brew install tmux
+        run: brew install tmux micro
       - uses: astral-sh/setup-uv@v10.2.0
         with:
           python-version: ${{ matrix.python }}
