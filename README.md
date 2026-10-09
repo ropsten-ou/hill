@@ -23,14 +23,14 @@ On PyPI palace is `hill`, and so is the command you type.
 - For Claude in micro and in the strip:
   [`claude-agent-acp`](https://www.npmjs.com/package/@agentclientprotocol/claude-agent-acp),
   from npm, and the micro plugin
-  [micro-claude](https://github.com/pierreb4/micro-claude).
+  [micro-claude](https://github.com/ropsten-ou/micro-claude/blob/main/README.md).
 
 On macOS, with Homebrew:
 
 ```bash
 brew install uv tmux micro
 npm install -g @agentclientprotocol/claude-agent-acp
-git clone https://github.com/pierreb4/micro-claude ~/.config/micro/plug/claude
+git clone https://github.com/ropsten-ou/micro-claude ~/.config/micro/plug/claude
 ```
 
 On Debian or Ubuntu, `sudo apt install tmux micro`, and uv from its
@@ -60,7 +60,7 @@ reference](docs/reference.md), generated from what palace declares.
 ## Running palace
 
 ```bash
-uv tool install hill   # once it's on PyPI: palace, with hill-ops under it
+uv tool install hill   # palace, with hill-ops under it
 ln -s ~/projects/hill/bin/shim ~/.local/bin/hill         # or from this folder
 ln -s ~/projects/hill/bin/shim ~/.local/bin/palace
 ln -s ~/projects/hill/bin/shim ~/.local/bin/palace-loop
