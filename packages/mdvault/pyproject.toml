@@ -1,0 +1,14 @@
+[project]
+name = "hill-mdvault"
+version = "0.1.0"
+description = "Read and change an Obsidian-style vault of Markdown notes: frontmatter, [[wikilinks]], backlinks, activity"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6"]
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+# On PyPI it's hill-mdvault, as mdvault is taken; the import stays mdvault.
+[tool.uv.build-backend]
+module-name = "mdvault"

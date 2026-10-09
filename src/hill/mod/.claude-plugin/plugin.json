@@ -1,0 +1,9 @@
+{
+  "name": "hill",
+  "version": "0.1.0",
+  "description": "palace's companion in its Claude sessions: the work item above the prompt, a guard on git add -A / commit -a, and /select",
+  "author": {
+    "name": "Pierre Baume"
+  },
+  "types": "./types/index.d.ts"
+}

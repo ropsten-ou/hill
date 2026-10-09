@@ -1,0 +1,125 @@
+# palace's settings, for hill-ops's settings panel. palace names this profile when
+# it says hello to hill-ops.
+app = "palace"
+# No work folder: what palace doesn't do yet goes in hill-ops's own, which
+# hill-ops lists when it runs from its repo (hill-ops work 019).
+
+[[groups]]
+id = "list"
+name = "List"
+where = "palace · applies right away"
+file = "${PALACE_CONFIG_HOME:-${XDG_CONFIG_HOME:-~/.config}/palace}/settings.json"
+
+  [[groups.settings]]
+  key = ["notes", "sort"]
+  label = "Sort by"
+  help = "Order of the notes list."
+  choices = ["title", "modified"]
+  default = "title"
+
+  [[groups.settings]]
+  key = ["notes", "map_start"]
+  label = "Map starts at"
+  help = "Where m opens the links map: the home note (Home, Root, Index or Start here) or the selected note."
+  choices = ["home", "current"]
+  default = "home"
+  names = [["home", "home note"], ["current", "selected note"]]
+
+  [[groups.settings]]
+  key = ["notes", "hide_done"]
+  label = "Hide done items"
+  help = "Hide work items all done (violet) or dropped: at once, or once done that long, from their since: date (else their last commit). A search or w shows them."
+  choices = ["never", "now", "day", "week", "month"]
+  default = "never"
+  names = [["never", "never"], ["now", "at once"], ["day", "after a day"], ["week", "after a week"], ["month", "after a month"]]
+
+  [[groups.settings]]
+  key = ["notes", "zoom_on"]
+  label = "Zoom on"
+  help = "How many of the last projects you selected notes in during this hill-ops session z zooms the list on; projects that count as one, such as zinc-mcp and zinc-desk, take one."
+  choices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  default = 3
+
+  [[groups.settings]]
+  key = ["notes", "zoom_style"]
+  label = "Zoom style"
+  help = "What z does: show only the last projects, or put them at the top, most recent first, above a line and the rest of the list."
+  choices = ["only", "top"]
+  default = "only"
+  names = [["only", "only them"], ["top", "at the top"]]
+
+[[groups]]
+id = "calendar"
+name = "Calendar"
+where = "palace · applies right away"
+file = "${PALACE_CONFIG_HOME:-${XDG_CONFIG_HOME:-~/.config}/palace}/settings.json"
+
+  [[groups.settings]]
+  key = ["notes", "calendar"]
+  label = "Calendar"
+  help = "Show the activity calendar under the list."
+  choices = [false, true]
+  default = true
+  instance = true
+
+  [[groups.settings]]
+  key = ["notes", "weeks"]
+  label = "Weeks shown"
+  help = "How many weeks the calendar covers."
+  choices = [8, 12, 16, 26, 52]
+  default = 16
+
+[[groups]]
+id = "preview"
+name = "Preview"
+where = "palace · applies right away"
+file = "${PALACE_CONFIG_HOME:-${XDG_CONFIG_HOME:-~/.config}/palace}/settings.json"
+
+  [[groups.settings]]
+  key = ["notes", "preview"]
+  label = "Preview"
+  help = "Show the selected note beside the list; inside hill-ops, in a pane of its own, as wide as Layout's widths leave it."
+  choices = [false, true]
+  default = true
+  instance = true
+
+[[groups]]
+id = "sync"
+name = "Sync"
+where = "palace · applies when you quit"
+file = "${PALACE_CONFIG_HOME:-${XDG_CONFIG_HOME:-~/.config}/palace}/settings.json"
+
+  [[groups.settings]]
+  key = ["sync", "commit"]
+  label = "Commit on quit"
+  help = "Commit changed notes and documents to git when you quit palace."
+  choices = [false, true]
+  default = true
+
+  [[groups.settings]]
+  key = ["sync", "push"]
+  label = "Push"
+  help = "Push palace's commits, unless commits of your own are waiting too."
+  choices = [false, true]
+  default = true
+
+[[groups]]
+id = "palace"
+name = "Palace"
+where = "palace · applies right away"
+file = "${PALACE_CONFIG_HOME:-${XDG_CONFIG_HOME:-~/.config}/palace}/settings.json"
+
+  [[groups.settings]]
+  key = ["theme"]
+  label = "Theme"
+  help = "palace's colours."
+  choices = "textual-themes"
+  default = "textual-dark"
+
+  [[groups.settings]]
+  key = ["claude", "park_after"]
+  label = "Park idle sessions after"
+  help = "How long a session on a waiting item, or on a project, stays idle before palace parks it: its claude stops, its session stays, and selecting it again carries it on. Sessions on ready and running items park at once, once written back. 50 minutes is the prompt cache's hour, less a margin."
+  choices = [0, 15, 30, 50, 120]
+  default = 50
+  names = [[0, "never"], [15, "15 minutes"], [30, "30 minutes"], [50, "50 minutes"], [120, "2 hours"]]

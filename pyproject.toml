@@ -1,0 +1,47 @@
+[project]
+name = "hill"
+version = "0.2.0"
+description = "A notes screen for a Markdown vault, with micro for editing, run above the strip of hill-ops for its settings"
+authors = [
+    { name = "Pierre Baume" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "textual>=8.2.8",
+    "hill-ops>=0.1.1,<0.2",
+    "hill-mdvault>=0.1,<0.2",
+    "keyline>=0.1,<0.2",
+    "settings-panel>=0.1,<0.2",
+    "hill-client>=0.1.1,<0.2",
+]
+
+# On PyPI palace is hill, and so is its command (work item 015 in hill-ops);
+# palace stays a second name for it. Its folder, repo and import are hill too (018).
+[project.scripts]
+hill = "hill:main"
+palace = "hill:main"
+palace-loop = "hill.restart:loop"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "hill"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
+
+# For development: hill-mdvault lives in packages/; hill-ops and keyline,
+# settings-panel and hill-client live in hill-ops, which is checked out next to
+# this folder. Published, they are installed by name and version.
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+hill-mdvault = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "packages"]
